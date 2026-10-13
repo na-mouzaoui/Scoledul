@@ -1,0 +1,24 @@
+<UserControl x:Class="Timetable.Desktop.Views.ExportsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel>
+        <TextBlock Text="Exports et impression" Style="{StaticResource HeaderText}" />
+
+        <StackPanel Orientation="Horizontal" Margin="0,4">
+            <TextBlock Text="Format :" />
+            <ComboBox ItemsSource="{Binding Formats}" SelectedItem="{Binding SelectedFormat}" Width="120" Margin="6,0,16,0" />
+            <TextBlock Text="Regroupement :" />
+            <ComboBox ItemsSource="{Binding Scopes}" SelectedItem="{Binding SelectedScope}" Width="160" Margin="6,0,0,0" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+            <Button Content="Exporter…" Command="{Binding ExportCommand}"
+                    Style="{StaticResource PrimaryButton}"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBool}}" />
+            <Button Content="Imprimer…" Command="{Binding PrintCommand}" />
+        </StackPanel>
+
+        <TextBlock Text="Journal des exports" Style="{StaticResource SectionText}" />
+        <ListBox ItemsSource="{Binding Log}" Height="180" />
+    </StackPanel>
+</UserControl>

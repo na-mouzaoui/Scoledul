@@ -1,0 +1,31 @@
+<UserControl x:Class="Timetable.Desktop.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel MaxWidth="640" HorizontalAlignment="Left">
+        <TextBlock Text="Paramètres" Style="{StaticResource HeaderText}" />
+
+        <TextBlock Text="Langue de l'interface" />
+        <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding Language}" Width="140" HorizontalAlignment="Left" />
+
+        <TextBlock Text="Thème" Margin="0,10,0,0" />
+        <ComboBox ItemsSource="{Binding Themes}" SelectedItem="{Binding Theme}" Width="140" HorizontalAlignment="Left" />
+
+        <TextBlock Text="Dossier par défaut des projets" Margin="0,10,0,0" />
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding DefaultProjectsDirectory}" Width="420" />
+            <Button Content="Parcourir…" Command="{Binding ChooseDirectoryCommand}" />
+        </StackPanel>
+
+        <TextBlock Text="Sauvegarde automatique" Margin="0,10,0,0" />
+        <StackPanel Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding AutoSave}" Content="Activer" VerticalContentAlignment="Center" />
+            <TextBlock Text="Nombre de copies conservées :" Margin="16,0,6,0" />
+            <TextBox Text="{Binding AutoSaveCopies}" Width="60" />
+        </StackPanel>
+
+        <TextBlock Text="{Binding LogsDirectory, StringFormat=Journaux : {0}}" Margin="0,14,0,0"
+                   Foreground="{DynamicResource Muted}" TextWrapping="Wrap" />
+        <Button Content="Ouvrir le dossier des journaux" HorizontalAlignment="Left"
+                Command="{Binding OpenLogsFolderCommand}" Margin="0,6,0,0" />
+    </StackPanel>
+</UserControl>

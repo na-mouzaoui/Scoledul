@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="App.Title" xml:space="preserve">
+    <value>Timetable generator</value>
+  </data>
+  <data name="Nav.Project" xml:space="preserve">
+    <value>Home / Project</value>
+  </data>
+  <data name="Nav.Week" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="Nav.Classes" xml:space="preserve">
+    <value>Classes</value>
+  </data>
+  <data name="Nav.Subjects" xml:space="preserve">
+    <value>Subjects</value>
+  </data>
+  <data name="Nav.Teachers" xml:space="preserve">
+    <value>Teachers</value>
+  </data>
+  <data name="Nav.Program" xml:space="preserve">
+    <value>Curriculum</value>
+  </data>
+  <data name="Nav.Generation" xml:space="preserve">
+    <value>Generation</value>
+  </data>
+  <data name="Nav.Results" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="Nav.Exports" xml:space="preserve">
+    <value>Exports</value>
+  </data>
+  <data name="Nav.Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+</root>

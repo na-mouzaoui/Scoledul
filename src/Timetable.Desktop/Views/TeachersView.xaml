@@ -1,0 +1,68 @@
+<UserControl x:Class="Timetable.Desktop.Views.TeachersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="360" />
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Column="0">
+            <TextBlock DockPanel.Dock="Top" Text="Enseignants" Style="{StaticResource HeaderText}" />
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,8">
+                <TextBlock Text="Recherche :" />
+                <TextBox Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}" Width="260"
+                         mah:TextBoxHelper.Watermark="Rechercher un enseignant ou une matière…" />
+                <Button Content="Nouveau" Command="{Binding NewTeacherCommand}" />
+            </StackPanel>
+            <DataGrid ItemsSource="{Binding FilteredTeachers}" SelectedItem="{Binding SelectedTeacher}"
+                      AutoGenerateColumns="False" IsReadOnly="True" Height="360"
+                      Style="{StaticResource DataGridStyle}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nom" Binding="{Binding LastName}" Width="150" />
+                    <DataGridTextColumn Header="Prénom" Binding="{Binding FirstName}" Width="150" />
+                    <DataGridTextColumn Header="Matière" Binding="{Binding SubjectName}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+
+        <StackPanel Grid.Column="1" Margin="12,0,0,0">
+            <TextBlock Text="{Binding FormTitle}" Style="{StaticResource SectionText}" />
+            <TextBlock Text="Nom" />
+            <TextBox Text="{Binding FormLastName}" />
+            <TextBlock Text="Prénom" />
+            <TextBox Text="{Binding FormFirstName}" />
+            <TextBlock Text="Matière enseignée" />
+            <ComboBox ItemsSource="{Binding Subjects}" SelectedItem="{Binding FormSubject}" DisplayMemberPath="Name" />
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Button Content="Enregistrer" Command="{Binding SaveTeacherCommand}" Style="{StaticResource PrimaryButton}" />
+                <Button Content="Supprimer"
+                        Style="{StaticResource DangerButton}"
+                        Command="{Binding DeleteTeacherCommand}"
+                        CommandParameter="{Binding SelectedTeacher}" />
+            </StackPanel>
+
+            <TextBlock Text="{Binding ValidationMessage}" Foreground="{DynamicResource ErrorBrush}"
+                       TextWrapping="Wrap" Margin="0,6,0,0" />
+
+            <TextBlock Text="Indisponibilités (cliquez pour basculer)" Style="{StaticResource SectionText}" />
+            <ItemsControl ItemsSource="{Binding Slots}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ToggleButton Content="{Binding Label}" IsChecked="{Binding IsUnavailable, Mode=OneWay}"
+                                      Style="{StaticResource ChipToggleButton}"
+                                      Command="{Binding DataContext.ToggleUnavailabilityCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                      CommandParameter="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </Grid>
+</UserControl>

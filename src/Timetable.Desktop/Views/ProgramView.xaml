@@ -1,0 +1,50 @@
+<UserControl x:Class="Timetable.Desktop.Views.ProgramView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel>
+        <TextBlock Text="Programme" Style="{StaticResource HeaderText}" />
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Classe :" />
+            <ComboBox ItemsSource="{Binding Classes}" SelectedItem="{Binding SelectedClass}"
+                      DisplayMemberPath="Name" Width="200" Margin="6,0,0,0" />
+            <Button Content="Copier vers les autres classes" Command="{Binding CopyToOtherClassesCommand}"
+                    Margin="12,0,0,0" />
+        </StackPanel>
+
+        <DataGrid ItemsSource="{Binding Rows}" AutoGenerateColumns="False" Margin="0,10,0,0" MaxHeight="420"
+                  CanUserAddRows="False" Style="{StaticResource DataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Matière" Binding="{Binding SubjectName}" IsReadOnly="True" Width="200" />
+                <DataGridTextColumn Header="Séances/semaine" Binding="{Binding WeeklySessions}" Width="140" />
+                <DataGridTemplateColumn Header="Enseignant imposé" Width="220">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Teachers}" DisplayMemberPath="Name"
+                                      SelectedValuePath="Id"
+                                      SelectedValue="{Binding FixedTeacherId, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <TextBlock Text="{Binding TotalSessions, StringFormat=Total : {0} séances}" />
+            <TextBlock Text="{Binding AvailableSlots, StringFormat= / {0} créneaux disponibles}" Margin="6,0,0,0" />
+        </StackPanel>
+
+        <TextBlock Text="{Binding ValidationMessage}" TextWrapping="Wrap" Margin="0,6,0,0">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="{DynamicResource Muted}" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsOverloaded}" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource ErrorBrush}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </StackPanel>
+</UserControl>

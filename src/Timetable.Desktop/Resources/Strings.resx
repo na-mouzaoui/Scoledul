@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="App.Title" xml:space="preserve">
+    <value>Générateur d'emplois du temps</value>
+  </data>
+  <data name="Nav.Project" xml:space="preserve">
+    <value>Accueil / Projet</value>
+  </data>
+  <data name="Nav.Week" xml:space="preserve">
+    <value>Semaine</value>
+  </data>
+  <data name="Nav.Classes" xml:space="preserve">
+    <value>Classes</value>
+  </data>
+  <data name="Nav.Subjects" xml:space="preserve">
+    <value>Matières</value>
+  </data>
+  <data name="Nav.Teachers" xml:space="preserve">
+    <value>Enseignants</value>
+  </data>
+  <data name="Nav.Program" xml:space="preserve">
+    <value>Programme</value>
+  </data>
+  <data name="Nav.Generation" xml:space="preserve">
+    <value>Génération</value>
+  </data>
+  <data name="Nav.Results" xml:space="preserve">
+    <value>Résultats</value>
+  </data>
+  <data name="Nav.Exports" xml:space="preserve">
+    <value>Exports</value>
+  </data>
+  <data name="Nav.Settings" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="Command.New" xml:space="preserve">
+    <value>Nouveau projet</value>
+  </data>
+  <data name="Command.Open" xml:space="preserve">
+    <value>Ouvrir…</value>
+  </data>
+  <data name="Command.Save" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="Command.SaveAs" xml:space="preserve">
+    <value>Enregistrer sous…</value>
+  </data>
+  <data name="Command.Duplicate" xml:space="preserve">
+    <value>Dupliquer</value>
+  </data>
+  <data name="Button.Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="Button.Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
+  <data name="Button.Generate" xml:space="preserve">
+    <value>Générer l'emploi du temps</value>
+  </data>
+  <data name="Button.Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Button.Validate" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="Button.Undo" xml:space="preserve">
+    <value>Annuler (Ctrl+Z)</value>
+  </data>
+  <data name="Button.Redo" xml:space="preserve">
+    <value>Rétablir (Ctrl+Y)</value>
+  </data>
+  <data name="Status.Saved" xml:space="preserve">
+    <value>Enregistré</value>
+  </data>
+</root>

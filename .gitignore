@@ -1,0 +1,30 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+publish/
+*.binlog
+
+# Visual Studio / Rider / VS Code
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Test results
+[Tt]est[Rr]esults/
+*.trx
+coverage*.xml
+coverage*.json
+
+# Fichiers projet générés par l'application
+*.edt
+*.edt-wal
+*.edt-shm
+.backups/
+
+# Divers
+*.log
+Thumbs.db
+desktop.ini

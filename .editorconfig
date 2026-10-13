@@ -1,0 +1,38 @@
+root = true
+
+[*]
+end_of_line = crlf
+insert_final_newline = true
+charset = utf-8
+indent_style = space
+indent_size = 4
+
+[*.{cs,csx}]
+dotnet_sort_system_directives_first = true
+csharp_style_namespace_declarations = file_scoped:suggestion
+
+# Les services enregistrés dans le conteneur d'injection de dépendances sont des
+# méthodes d'instance par nature ; ne pas suggérer de les rendre statiques.
+dotnet_diagnostic.CA1822.severity = none
+dotnet_diagnostic.CA1826.severity = none
+dotnet_diagnostic.CA1848.severity = none
+dotnet_diagnostic.CA2007.severity = none
+dotnet_diagnostic.CA1062.severity = none
+dotnet_diagnostic.IDE0290.severity = none
+# Les noms de tests xUnit utilisent des traits de soulignement par convention.
+dotnet_diagnostic.CA1707.severity = none
+# Suggestions de performance/structure non pertinentes ici.
+dotnet_diagnostic.CA1859.severity = none
+dotnet_diagnostic.CA1861.severity = none
+dotnet_diagnostic.CA1816.severity = none
+# La culture est gérée explicitement là où c'est nécessaire ; ne pas l'imposer partout.
+dotnet_diagnostic.CA1305.severity = suggestion
+
+[*.{xml,xaml,resx,props,targets,csproj,sln}]
+indent_size = 2
+
+[*.{json,yml,yaml}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false

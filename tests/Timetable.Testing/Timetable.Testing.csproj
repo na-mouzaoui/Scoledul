@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Timetable.Testing</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Timetable.Domain\Timetable.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Timetable.Application\Timetable.Application.csproj" />
+  </ItemGroup>
+
+</Project>

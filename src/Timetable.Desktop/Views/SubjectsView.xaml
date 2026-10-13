@@ -1,0 +1,35 @@
+<UserControl x:Class="Timetable.Desktop.Views.SubjectsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+    <StackPanel>
+        <TextBlock Text="Matières" Style="{StaticResource HeaderText}" />
+
+        <Button Content="Ajouter une matière" HorizontalAlignment="Left" Command="{Binding AddSubjectCommand}" />
+
+        <ItemsControl ItemsSource="{Binding Subjects}" Margin="0,12,0,0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                        <TextBox Text="{Binding Name, UpdateSourceTrigger=LostFocus}" Width="220"
+                                 mah:TextBoxHelper.Watermark="Nom de la matière" />
+                        <TextBlock Text="Couleur" Margin="10,0,4,0" />
+                        <TextBox Text="{Binding ColorHex, UpdateSourceTrigger=LostFocus}" Width="90" />
+                        <Border Width="24" Height="18" Margin="6,0,10,0" BorderBrush="{DynamicResource AppBorder}"
+                                BorderThickness="1" Background="{Binding ColorHex, Converter={StaticResource HexToBrush}}" />
+                        <TextBlock Text="Bloc" />
+                        <ComboBox ItemsSource="{Binding DataContext.BlockSizes, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                  SelectedItem="{Binding BlockSize}" Width="60" Margin="4,0,10,0" />
+                        <Button Content="Supprimer"
+                                Style="{StaticResource DangerButton}"
+                                Command="{Binding DataContext.RemoveSubjectCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                CommandParameter="{Binding}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <TextBlock Text="{Binding ValidationMessage}" Foreground="{DynamicResource ErrorBrush}"
+                   TextWrapping="Wrap" Margin="0,10,0,0" />
+    </StackPanel>
+</UserControl>

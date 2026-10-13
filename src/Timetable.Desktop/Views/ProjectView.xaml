@@ -1,0 +1,46 @@
+<UserControl x:Class="Timetable.Desktop.Views.ProjectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+    <StackPanel>
+        <TextBlock Text="Accueil / Projet" Style="{StaticResource HeaderText}" />
+
+        <TextBlock Text="Nom du projet" Style="{StaticResource FieldLabel}" />
+        <TextBox Text="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged}"
+                 mah:TextBoxHelper.Watermark="Nom du projet"
+                 MaxWidth="420" HorizontalAlignment="Left" />
+
+        <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+            <Button Content="Nouveau projet" Command="{Binding NewCommand}" />
+            <Button Content="Ouvrir…" Command="{Binding OpenCommand}" />
+            <Button Content="Enregistrer" Command="{Binding SaveCommand}" Style="{StaticResource PrimaryButton}" />
+            <Button Content="Enregistrer sous…" Command="{Binding SaveAsCommand}" />
+            <Button Content="Dupliquer" Command="{Binding DuplicateProjectCommand}" Style="{StaticResource GhostButton}" />
+        </StackPanel>
+
+        <TextBlock Text="Exemple / démonstration" Style="{StaticResource SectionText}" />
+        <Button Content="Charger l'exemple (classes, matières, enseignants, programme)"
+                Command="{Binding LoadDemoCommand}" HorizontalAlignment="Left" />
+        <TextBlock Text="Crée un projet « Demonstration.edt » si aucun projet n'est ouvert, puis le remplit. Permet de tester la génération immédiatement."
+                   Foreground="{DynamicResource Muted}" TextWrapping="Wrap" Margin="0,6,0,0" />
+
+        <TextBlock Text="Projets récents" Style="{StaticResource SectionText}" />        <ListBox ItemsSource="{Binding RecentProjects}"
+                 Visibility="{Binding HasRecentProjects, Converter={StaticResource BoolToVisibility}}"
+                 MaxHeight="240">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Ouvrir"
+                                Command="{Binding DataContext.OpenRecentCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                CommandParameter="{Binding}" />
+                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold" Margin="10,0,10,0" />
+                        <TextBlock Text="{Binding FilePath}" Foreground="{DynamicResource Muted}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <TextBlock Text="{Binding DefaultDirectory, StringFormat=Dossier par défaut : {0}}"
+                   Foreground="{DynamicResource Muted}" Margin="0,10,0,0" TextWrapping="Wrap" />
+    </StackPanel>
+</UserControl>
